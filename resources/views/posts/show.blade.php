@@ -9,14 +9,18 @@
         <div class="col-4">
             <div class="d-flex aling-items-center">
                 <div class="pr-3">
-                    <img src="/storage/{{ $post->user->profile->profileImage() }}" style="max-width: 40px" class="w-100 rounded-circle">
+                    <img src="{{ $post->user->profile->profileImage() }}" style="max-width: 40px" class="w-100 rounded-circle">
                 </div>
                 <div>
                     <p class="font-weight-bold">
                         <a href="/{{ $post->user->id }}">
                             <span class="text-dark">{{ $post->user->username }}</span>
                         </a>
-                        <a href="#" class="pl-3">Follow</a>
+                        @cannot('update',  $post->user->profile)
+                        <follow-button user-id="{{ $post->user->id }}" 
+                            follows={{ $follows }}>
+                        </follow-button>
+                    @endcannot
                     </p>
                     
                 </div>

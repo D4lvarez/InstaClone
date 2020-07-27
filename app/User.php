@@ -49,6 +49,8 @@ class User extends Authenticatable
                     'title' => $user->username,
                 ]);
             }
+
+            
         );
     }
 
